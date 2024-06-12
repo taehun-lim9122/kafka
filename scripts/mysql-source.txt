@@ -1,0 +1,13 @@
+ 
+{  
+    "name": "mysql-source-connector",
+    "config": {
+      "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+      "tasks.max": "1",
+      "connection.url": "jdbc:mysql://mysql-container:3306/classicmodels",
+      "connection.user": "root",
+      "connection.password": "1234",
+      "table.whitelist": "customers",
+      "topic.prefix": "mysql-"
+    }
+}
