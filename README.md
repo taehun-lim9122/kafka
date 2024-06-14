@@ -12,7 +12,7 @@ sudo rm -rf "가상환경 이름"
 2. 가상환경 접속 및 종료
 ```
 # 접속
-source .venv/bin/activate
+source "가상환경 이름"/bin/activate
 
 # 종료
 deactivate
@@ -55,7 +55,7 @@ docker exec -it broker kafka-topics --list --bootstrap-server broker:9092
 ```
 docker exec -it broker kafka-console-consumer --bootstrap-server localhost:9092 --topic "{토픽 이름}" --from-beginning
 ```
-4. 커낵터 리스트 확인
+4. 커넥터 리스트 확인
 ```
 curl -X GET http://localhost:8083/connectors/
 ```
