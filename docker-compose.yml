@@ -74,7 +74,7 @@ services:
       # Schema Registry의 서비스 이름과 포트를 기입
 
   kafka-setup:
-    image: curlimages/curl:8.8.0
+    image: confluentinc/cp-kafka:7.3.0
     hostname: kafka-setup
     container_name: kafka-setup
     networks:
@@ -84,13 +84,15 @@ services:
       - broker
       - schema-registry
     volumes:
-      - ./connectors:/tmp/connectors
-    command: [
-      bash -c 'echo Waiting for Kafka to be ready... &&
+      - ./scripts:/scripts
+    command: >
+      bash -c '
+      echo "Waiting for Kafka to be ready..." &&
       cub kafka-ready -b broker:29092 1 60 &&
-      kafka-topics --create --if-not-exists --bootstrap-server broker:29092 --partitions 2 --replication-factor 1 --topic classicmodels.customers &&
-      echo Waiting 60 seconds for Connect to be ready... &&
-      sleep 60 &&]
+      kafka-topics --create --if-not-exists --bootstrap-server broker:29092 --partitions 2 --replication-factor 1 --topic topic-test &&
+      echo "Kafka setup completed." &&
+      sleep infinity
+      '
     environment:
       # The following settings are listed here only to satisfy the image's requirements.
       # We override the image's `command` anyways, hence this container will not start a broker.
