@@ -73,6 +73,32 @@ services:
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081 # Value Converter에 대한 Schema Registry URL 설정
       # Schema Registry의 서비스 이름과 포트를 기입
 
+  kafka-setup:
+    image: confluentinc/cp-kafka:7.3.0
+    hostname: kafka-setup
+    container_name: kafka-setup
+    networks:
+      - kafka-test
+    depends_on:
+      - connect
+      - broker
+      - schema-registry
+    volumes:
+      - ./scripts:/scripts
+    command: >
+      bash -c '
+      echo "Waiting for Kafka to be ready..." &&
+      cub kafka-ready -b broker:29092 1 60 &&
+      kafka-topics --create --if-not-exists --bootstrap-server broker:29092 --partitions 2 --replication-factor 1 --topic topic-test &&
+      echo "Kafka setup completed." &&
+      sleep infinity
+      '
+    environment:
+      # The following settings are listed here only to satisfy the image's requirements.
+      # We override the image's `command` anyways, hence this container will not start a broker.
+      KAFKA_BROKER_ID: ignored
+      KAFKA_ZOOKEEPER_CONNECT: ignored
+
 networks:
   kafka-test:
     external: true

@@ -9,11 +9,13 @@
       "database.user":"root",
       "database.password":"1234",
       "database.server.id":"1",
-      "database.whitelist": "test",
-      "table.whitelist": "test.name",
+      "database.include.list": "test", 
+      "table.include.list": "test.name",
       "snapshot.locking.mode": "none",
-      "topic.prefix": "topic-",
+      "topic.prefix": "dbz",
       "schema.history.internal.kafka.bootstrap.servers": "broker:29092",
-      "schema.history.internal.kafka.topic":"schema-changes.test"
+      "schema.history.internal.kafka.topic":"schema-changes.test",
+      "database.history.kafka.bootstrap.servers": "kafka-broker:29092",
+      "database.history.kafka.topic": "topic-test"
     }
 }
