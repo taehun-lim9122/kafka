@@ -5,7 +5,7 @@ import json
 url = 'http://localhost:8083/connectors'
 
 # 소스 커넥터의 설정 파일 경로
-config_file = './scripts/mysql-source-connector.json'
+config_file = './scripts/source-test.json'
 
 # 설정 파일을 읽어서 JSON으로 변환
 with open(config_file, 'r') as f:
@@ -14,6 +14,7 @@ with open(config_file, 'r') as f:
 # POST 요청 보내기
 response = requests.post(url, headers={'Content-Type': 'application/json'}, json=connector_config)
 
+print(response.status_code)
 # 응답 확인
 if response.status_code == 201:
     print('소스 커넥터가 성공적으로 생성되었습니다.')

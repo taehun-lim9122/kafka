@@ -12,6 +12,10 @@
       "database.include.list":"classicmodels",
       "table.include.list":"customers",
       "snapshot.locking.mode": "none",
-      "topic.prefix": "topic-"
+      "schema.history.internal.kafka.bootstrap.servers": "broker:29092",
+      "schema.history.internal.kafka.topic":"schema-changes.customers",
+      "topic.prefix": "topic-",
+      "database.history.kafka.bootstrap.servers": "broker:9092",
+      "database.history.kafka.topic": "classicmodels.customers"
     }
 }
