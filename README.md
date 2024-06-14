@@ -1,18 +1,27 @@
 # kafka
 
 ## 실행 방법
-1. 가상환경 생성
-
+1. 가상환경 생성 및 삭제
 ```python
-python -m venv venv
-```
+# 생성
+python -m venv "가상환경 이름"
 
-2. requirements.txt를 통해 가상환경에 필요한 패키지 설치
+# 삭제
+sudo rm -rf "가상환경 이름"
+```
+2. 가상환경 접속 및 종료
+```
+# 접속
+source .venv/bin/activate
+
+# 종료
+deactivate
+```
+3. requirements.txt를 통해 가상환경에 필요한 패키지 설치
 ```python
 pip install -r requirements.txt
 ```
-
-3. docker-compose 파일 실행 및 종료
+4. docker-compose 파일 실행 및 종료
 ```
 # 전체 한번에 실행 시
 docker-compose up -d
@@ -23,8 +32,7 @@ docker-compose up -d "컨테이너 이름"
 # 컨테이너 종료
 docker-compose down
 ```
-
-4. debezium mysql source connector 생성 및 제거
+5. debezium mysql source connector 생성 및 제거
 ```
 # 생성
 python3 create_connector.py
