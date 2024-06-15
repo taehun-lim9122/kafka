@@ -21,7 +21,11 @@ deactivate
 ```python
 pip install -r requirements.txt
 ```
-4. docker-compose 파일 실행 및 종료
+4. 추가된 라이브러리 requirements.txt에 리스트업
+```python
+pip freeze > requirements.txt
+```
+5. docker-compose 파일 실행 및 종료
 ```
 # 전체 한번에 실행 시
 docker-compose up -d
@@ -32,7 +36,7 @@ docker-compose up -d "컨테이너 이름"
 # 컨테이너 종료
 docker-compose down
 ```
-5. debezium mysql source connector 생성 및 제거
+6. debezium mysql source connector 생성 및 제거
 ```
 # 생성
 python3 create_connector.py
