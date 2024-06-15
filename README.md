@@ -55,15 +55,19 @@ docker exec -it broker kafka-topics --list --bootstrap-server broker:9092
 ```
 docker exec -it broker kafka-console-consumer --bootstrap-server localhost:9092 --topic "{토픽 이름}" --from-beginning
 ```
-4. 커넥터 리스트 확인
+4. 브로커 토픽 내 파티션 확인
+```
+docker exec -it broker kafka-topics --bootstrap-server broker:9092 --describe --topic "토픽 이름"
+```
+5. 커넥터 리스트 확인
 ```
 curl -X GET http://localhost:8083/connectors/
 ```
-5. 커넥터 상태 확인
+6. 커넥터 상태 확인
 ```
 curl -X GET http://localhost:8083/connectors/"{커넥터 이름}"/status
 ```
-6. 컨슈머 리스트 확인
+7. 컨슈머 리스트 확인
 ```
 docker exec -it broker kafka-consumer-groups --bootstrap-server broker:9092 --list
 ```
