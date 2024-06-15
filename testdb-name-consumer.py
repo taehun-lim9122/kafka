@@ -35,8 +35,8 @@ def consume_messages(consumer):
 
 if __name__ == "__main__":
     broker = 'localhost:9092'
-    group_id = 'dbz.test.name.subscriber'
-    topic = 'dbz.test.name'
+    group_id = 'classicmodels.customers.subscriber'
+    topic = 'topic.classicmodels.customers'
 
     consumer = create_consumer(broker, group_id, topic)
     consume_messages(consumer)
