@@ -63,3 +63,7 @@ curl -X GET http://localhost:8083/connectors/
 ```
 curl -X GET http://localhost:8083/connectors/"{커넥터 이름}"/status
 ```
+6. 컨슈머 리스트 확인
+```
+docker exec -it broker kafka-consumer-groups --bootstrap-server broker:9092 --list
+```
