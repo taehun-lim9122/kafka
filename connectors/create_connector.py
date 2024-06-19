@@ -5,7 +5,7 @@ import json
 url = 'http://localhost:8083/connectors'
 
 # 소스 커넥터의 설정 파일 경로
-config_file = './scripts/classcimodels-employees-source-connector.json'
+config_file = '../scripts/classcimodels-employees-source-connector.json'
 
 # 설정 파일을 읽어서 JSON으로 변환
 with open(config_file, 'r') as f:
